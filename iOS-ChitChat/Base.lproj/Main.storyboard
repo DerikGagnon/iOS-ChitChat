@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="73" id="v6A-BL-4sM" customClass="MessageCell" customModule="ChitChat" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="73" id="v6A-BL-4sM" customClass="MessageCell" customModule="iOS_ChitChat" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="73"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v6A-BL-4sM" id="hyM-Sz-MSN">
@@ -47,6 +47,8 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="date" destination="5VB-V8-jSi" id="RH8-ys-fPd"/>
+                                    <outlet property="message" destination="u4s-4B-Qrm" id="CxN-r4-Jf6"/>
                                     <segue destination="5Wg-gX-5Zi" kind="show" id="CzZ-5U-Qvb"/>
                                 </connections>
                             </tableViewCell>

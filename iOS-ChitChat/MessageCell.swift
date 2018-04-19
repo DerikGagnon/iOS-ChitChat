@@ -10,7 +10,18 @@ import UIKit
 
 class MessageCell : UITableViewCell {
  
+    @IBOutlet weak var message: UILabel!
+    @IBOutlet weak var date: UILabel!
     
+//    var cell: Message? {
+//        didSet {
+//            guard let cell = cell else {
+//                return
+//            }
+//            self.message?.text = cell.message
+//            self.date?.text = cell.date
+//        }
+//    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
