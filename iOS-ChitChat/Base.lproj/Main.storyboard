@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,35 +20,85 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="73" id="v6A-BL-4sM" customClass="MessageCell" customModule="iOS_ChitChat" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="73"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="99" id="v6A-BL-4sM" customClass="MessageCell" customModule="iOS_ChitChat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="99"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v6A-BL-4sM" id="hyM-Sz-MSN">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="72.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="98.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="SPI-hX-Kx9">
-                                            <rect key="frame" x="16" y="11" width="79.5" height="42"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="SPI-hX-Kx9">
+                                            <rect key="frame" x="16" y="11" width="79.5" height="45"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4s-4B-Qrm">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4s-4B-Qrm">
                                                     <rect key="frame" x="0.0" y="0.0" width="79.5" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5VB-V8-jSi">
-                                                    <rect key="frame" x="0.0" y="24" width="32.5" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5VB-V8-jSi">
+                                                    <rect key="frame" x="0.0" y="27" width="32.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="163" translatesAutoresizingMaskIntoConstraints="NO" id="ogU-JY-rNv">
+                                            <rect key="frame" x="16.5" y="61" width="287" height="30"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="e8E-ks-C0a" userLabel="Like">
+                                                    <rect key="frame" x="0.0" y="0.0" width="54.5" height="30"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eha-TU-x2A">
+                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                            <state key="normal" title="Like"/>
+                                                            <connections>
+                                                                <action selector="likeButton:" destination="v6A-BL-4sM" eventType="touchUpInside" id="IN8-c6-vA4"/>
+                                                            </connections>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yl-7D-rUs">
+                                                            <rect key="frame" x="44" y="0.0" width="10.5" height="30"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="vQN-jY-obg" userLabel="Dislike">
+                                                    <rect key="frame" x="217.5" y="0.0" width="69.5" height="30"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSU-RB-mbp">
+                                                            <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                                            <state key="normal" title="Dislike"/>
+                                                            <connections>
+                                                                <action selector="dislikeButton:" destination="v6A-BL-4sM" eventType="touchUpInside" id="GrC-qv-jGS"/>
+                                                            </connections>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atu-6N-jPD">
+                                                            <rect key="frame" x="59" y="0.0" width="10.5" height="30"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ogU-JY-rNv" secondAttribute="trailing" constant="0.5" id="K2W-Bi-Yh3"/>
+                                        <constraint firstItem="ogU-JY-rNv" firstAttribute="centerX" secondItem="hyM-Sz-MSN" secondAttribute="centerX" id="Vyc-Oi-oL2"/>
+                                        <constraint firstItem="SPI-hX-Kx9" firstAttribute="leading" secondItem="hyM-Sz-MSN" secondAttribute="leadingMargin" id="cXH-wq-ZkS"/>
+                                        <constraint firstItem="SPI-hX-Kx9" firstAttribute="top" secondItem="hyM-Sz-MSN" secondAttribute="topMargin" id="eJr-9Q-Suo"/>
+                                        <constraint firstItem="ogU-JY-rNv" firstAttribute="leading" secondItem="hyM-Sz-MSN" secondAttribute="leadingMargin" constant="0.5" id="fxK-hD-vlh"/>
+                                        <constraint firstItem="ogU-JY-rNv" firstAttribute="top" secondItem="SPI-hX-Kx9" secondAttribute="bottom" constant="5" id="rnw-xV-0yk"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="date" destination="5VB-V8-jSi" id="RH8-ys-fPd"/>
+                                    <outlet property="dislikes" destination="OSU-RB-mbp" id="Dpo-ei-OZp"/>
+                                    <outlet property="likes" destination="6Yl-7D-rUs" id="J1h-yM-6rS"/>
                                     <outlet property="message" destination="u4s-4B-Qrm" id="CxN-r4-Jf6"/>
                                     <segue destination="5Wg-gX-5Zi" kind="show" id="CzZ-5U-Qvb"/>
                                 </connections>
