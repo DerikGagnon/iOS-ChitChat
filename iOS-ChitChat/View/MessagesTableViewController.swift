@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MessagesTableViewController: UITableViewController {
     var messages: [Message] = []
@@ -29,7 +30,45 @@ class MessagesTableViewController: UITableViewController {
         
         return cell
     }
+    
+    func getData() {
+        Alamofire.request("https://www.stepoutnyc.com/chitchat", method: .get, parameters: ["key" : API_KEY, "client" : CLIENT]).responseJSON { response in
+            if let json = response.result.value {
+                let jsonDict = json as! NSDictionary
+                let jsonMessages = jsonDict["messages"] as! NSArray
+                self.messages.removeAll()
+                
+                for jsonMessage in jsonMessages {
+                    let messageText = jsonMessage as! NSDictionary as! [String: Any]
+                    self.message = Message(json: messageText)
+                    self.messages.append(self.message)
+                    print (self.message.id)
+                }
+            }
+            self.tableView.reloadData()
+        }
+    }
 
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        getData()
+        tableView.rowHeight = 100
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
 }
 

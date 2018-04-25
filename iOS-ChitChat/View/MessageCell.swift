@@ -15,15 +15,27 @@ class MessageCell : UITableViewCell {
     @IBOutlet weak var likes: UILabel!
     @IBOutlet weak var dislikes: UILabel!
     
+    var messageItem: Message!
+    
     
     @IBAction func likeButton(_ sender: UIButton) {
         //Make request to like post
-        //Add post ID to like database
+        let text = likes.text   // converting the labels display to a string value
+        let numberFormatter = NumberFormatter()
+            
+        let theNumber = numberFormatter.number(from: text!)?.intValue // the number is assigned the value of 100.5
+        messageItem?.like()
+        likes.text = String(theNumber! + 1)
     }
     
     @IBAction func dislikeButton(_ sender: UIButton) {
         //Make request to dislike post
-        //Add post ID to dislike database
+        let text = dislikes.text   // converting the labels display to a string value
+        let numberFormatter = NumberFormatter()
+            
+        let theNumber = numberFormatter.number(from: text!)?.intValue // the number is assigned the value of 100.5
+        messageItem?.dislike()
+        dislikes.text = String(theNumber! + 1)
     }
     
     var cell: Message? {

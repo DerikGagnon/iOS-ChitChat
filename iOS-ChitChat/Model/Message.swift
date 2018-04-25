@@ -8,43 +8,45 @@
 
 import Foundation
 import Alamofire
+import CoreLocation
 
 let API_KEY = "524d4955-63f6-40bb-b5e0-63caea8b981d";
 let CLIENT = "derik.gagnon@mymail.champlain.edu";
 
-struct Message: Codable {
+struct Message {
     let id:String
-    let client: String
     let date: String
     var dislikes: Int
     let ip: String
     var likes: Int
-    let loc: [String?]
+    var loc: CLLocationCoordinate2D?
     let message: String
     
     init?(json: [String: Any]) {
-        guard let idJSON = json["_id"] as? String,
-            let clientJSON = json["client"] as? String,
-            let dateJSON = json["date"] as? String,
-            let dislikesJSON = json["dislikes"] as? Int,
-            let ipJSON = json["ip"] as? String,
-            let likesJSON = json["likes"] as? Int,
-            
-            let messageJSON = json["message"] as? String
-            else {
-                return nil
-        }
+        let idJSON = json["_id"] as? String
+        let dateJSON = json["date"] as? String
+        let dislikesJSON = json["dislikes"] as? Int
+        let ipJSON = json["ip"] as? String
+        let likesJSON = json["likes"] as? Int
+        let messageJSON = json["message"] as? String
     
-        let coordinatesJSON = json["loc"] as? [String]
+        //let coordinatesJSON = json["loc"] as? [String]
+        if let coordinatesJSON = json["loc"] as? [Any] {
+            if Double(String(describing: coordinatesJSON[0])) != nil && Double(String(describing: coordinatesJSON[1])) != nil {
+                let longitude: Double = Double(String(describing: coordinatesJSON[0]))!
+                let latitude: Double = Double(String(describing: coordinatesJSON[1]))!
+                self.loc = CLLocationCoordinate2D.init(latitude: latitude, longitude: longitude)
+            }
+        }
         
-        self.id = idJSON
-        self.client = clientJSON.components(separatedBy: "@")[0]
-        self.dislikes = dislikesJSON
-        self.ip = ipJSON
-        self.likes = likesJSON
-        self.loc = coordinatesJSON!
-        self.message = messageJSON
-        self.date = dateJSON
+        self.id = idJSON!
+        self.dislikes = dislikesJSON!
+        self.ip = ipJSON!
+        self.likes = likesJSON!
+        
+        //self.loc = coordinatesJSON!
+        self.message = messageJSON!
+        self.date = dateJSON!
     }
     
     mutating func like() {
