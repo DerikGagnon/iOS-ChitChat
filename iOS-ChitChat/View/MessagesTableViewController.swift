@@ -9,15 +9,25 @@
 import UIKit
 
 class MessagesTableViewController: UITableViewController {
+    var messages: [Message] = []
+    var message: Message!
+    var numMessages: Int = 20
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageCell
+        
+        let m = messages[indexPath.row]
+        
+        cell.likes.text = String(m.likes)
+        cell.dislikes.text = String(m.dislikes)
+        cell.date.text = m.date
+        cell.message.text = m.message
+        
+        return cell
     }
 
 

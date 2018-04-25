@@ -7,14 +7,18 @@
 //
 
 import Foundation
+import Alamofire
+
+let API_KEY = "524d4955-63f6-40bb-b5e0-63caea8b981d";
+let CLIENT = "derik.gagnon@mymail.champlain.edu";
 
 struct Message: Codable {
     let id:String
     let client: String
-    let date: Date
-    let dislikes: Int
+    let date: String
+    var dislikes: Int
     let ip: String
-    let likes: Int
+    var likes: Int
     let loc: [String?]
     let message: String
     
@@ -31,10 +35,6 @@ struct Message: Codable {
                 return nil
         }
     
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss zzz" //Your date format
-        let date = dateFormatter.date(from: dateJSON) //according to date format your date string
-        
         let coordinatesJSON = json["loc"] as? [String]
         
         self.id = idJSON
@@ -42,6 +42,34 @@ struct Message: Codable {
         self.dislikes = dislikesJSON
         self.ip = ipJSON
         self.likes = likesJSON
-        self.loc = coordinatesJSON
+        self.loc = coordinatesJSON!
+        self.message = messageJSON
+        self.date = dateJSON
+    }
+    
+    mutating func like() {
+        //Stores the Liked messages in an array for freezing later
+        var likes = (UserDefaults.standard.array(forKey: "likes") ?? []) as! [String]
+        let dislikes = (UserDefaults.standard.array(forKey: "dislikes") ?? []) as! [String]
+        if !likes.contains(id) && !dislikes.contains(id) {
+            likes.append(id)
+            self.likes += 1
+            let url: String = "https://www.stepoutnyc.com/chitchat/like/" + id
+            Alamofire.request(url, method: .get , parameters: ["key" : API_KEY, "client" : CLIENT])
+            UserDefaults.standard.set(likes, forKey: "likes")
+        }
+    }
+    
+    mutating func dislike() {
+        //Stores the Disliked messages in an array for freezing later
+        let likes = (UserDefaults.standard.array(forKey: "likes") ?? []) as! [String]
+        var dislikes = (UserDefaults.standard.array(forKey: "dislikes") ?? []) as! [String]
+        if !likes.contains(id) && !dislikes.contains(id) {
+            dislikes.append(id)
+            self.dislikes += 1
+            let url: String = "https://www.stepoutnyc.com/chitchat/dislike/" + id
+            Alamofire.request(url, method: .get , parameters: ["key" : API_KEY, "client" : CLIENT])
+            UserDefaults.standard.set(dislikes, forKey: "dislikes")
+        }
     }
 }

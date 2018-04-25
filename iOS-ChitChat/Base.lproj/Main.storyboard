@@ -97,7 +97,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="date" destination="5VB-V8-jSi" id="RH8-ys-fPd"/>
-                                    <outlet property="dislikes" destination="OSU-RB-mbp" id="Dpo-ei-OZp"/>
+                                    <outlet property="dislikes" destination="atu-6N-jPD" id="Zbf-rX-mTX"/>
                                     <outlet property="likes" destination="6Yl-7D-rUs" id="J1h-yM-6rS"/>
                                     <outlet property="message" destination="u4s-4B-Qrm" id="CxN-r4-Jf6"/>
                                     <segue destination="5Wg-gX-5Zi" kind="show" id="CzZ-5U-Qvb"/>
@@ -115,10 +115,10 @@
             </objects>
             <point key="canvasLocation" x="120" y="196.47887323943661"/>
         </scene>
-        <!--View Controller-->
+        <!--Messages View Controller-->
         <scene sceneID="9MZ-o3-qPF">
             <objects>
-                <viewController id="5Wg-gX-5Zi" sceneMemberID="viewController">
+                <viewController id="5Wg-gX-5Zi" customClass="MessagesViewController" customModule="iOS_ChitChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RFg-my-T0G">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -135,6 +135,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="Enx-c8-SVD"/>
                     </view>
+                    <connections>
+                        <outlet property="image" destination="CPc-jk-R2o" id="gbr-q5-cdk"/>
+                        <outlet property="map" destination="y5L-l5-jVT" id="FFZ-a6-GTk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rP4-nC-cEn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

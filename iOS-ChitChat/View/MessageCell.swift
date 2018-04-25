@@ -13,7 +13,7 @@ class MessageCell : UITableViewCell {
     @IBOutlet weak var message: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var likes: UILabel!
-    @IBOutlet weak var dislikes: UIButton!
+    @IBOutlet weak var dislikes: UILabel!
     
     
     @IBAction func likeButton(_ sender: UIButton) {
@@ -33,8 +33,8 @@ class MessageCell : UITableViewCell {
             }
             self.message?.text = cell.message
             self.date?.text = cell.date
-            self.likes?.text = cell.likes
-            self.dislikes?.text = cell.dislikes
+            self.likes?.text = String(cell.likes)
+            self.dislikes?.text = String(cell.dislikes)
         }
     }
     
