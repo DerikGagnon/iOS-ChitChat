@@ -20,18 +20,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="99" id="v6A-BL-4sM" customClass="MessageCell" customModule="iOS_ChitChat" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="99"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="90" id="v6A-BL-4sM" customClass="MessageCell" customModule="iOS_ChitChat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v6A-BL-4sM" id="hyM-Sz-MSN">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="98.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="SPI-hX-Kx9">
-                                            <rect key="frame" x="16" y="11" width="54.5" height="31"/>
+                                            <rect key="frame" x="16" y="11" width="285" height="31"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4s-4B-Qrm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="54.5" height="16"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="285" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="285" id="YxH-hb-rbD"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -77,7 +80,7 @@
                                                                 <action selector="dislikeButton:" destination="v6A-BL-4sM" eventType="touchUpInside" id="GrC-qv-jGS"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atu-6N-jPD">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atu-6N-jPD">
                                                             <rect key="frame" x="54" y="0.0" width="8.5" height="28"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="textColor"/>
@@ -93,15 +96,16 @@
                                         <constraint firstItem="ogU-JY-rNv" firstAttribute="centerX" secondItem="hyM-Sz-MSN" secondAttribute="centerX" id="Vyc-Oi-oL2"/>
                                         <constraint firstItem="SPI-hX-Kx9" firstAttribute="leading" secondItem="hyM-Sz-MSN" secondAttribute="leadingMargin" id="cXH-wq-ZkS"/>
                                         <constraint firstItem="SPI-hX-Kx9" firstAttribute="top" secondItem="hyM-Sz-MSN" secondAttribute="topMargin" id="eJr-9Q-Suo"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ogU-JY-rNv" secondAttribute="bottom" constant="4" id="fap-hI-5XJ"/>
                                         <constraint firstItem="ogU-JY-rNv" firstAttribute="leading" secondItem="hyM-Sz-MSN" secondAttribute="leadingMargin" constant="0.5" id="fxK-hD-vlh"/>
                                         <constraint firstItem="ogU-JY-rNv" firstAttribute="top" secondItem="SPI-hX-Kx9" secondAttribute="bottom" constant="5" id="rnw-xV-0yk"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="date" destination="5VB-V8-jSi" id="RH8-ys-fPd"/>
-                                    <outlet property="dislikes" destination="atu-6N-jPD" id="Zbf-rX-mTX"/>
-                                    <outlet property="likes" destination="6Yl-7D-rUs" id="J1h-yM-6rS"/>
-                                    <outlet property="message" destination="u4s-4B-Qrm" id="CxN-r4-Jf6"/>
+                                    <outlet property="dateLabel" destination="5VB-V8-jSi" id="Tnh-do-LkF"/>
+                                    <outlet property="dislikesLabel" destination="atu-6N-jPD" id="kxL-UA-6zw"/>
+                                    <outlet property="likesLabel" destination="6Yl-7D-rUs" id="ipf-SG-bgx"/>
+                                    <outlet property="messageLabel" destination="u4s-4B-Qrm" id="j5h-pP-XSn"/>
                                     <segue destination="5Wg-gX-5Zi" kind="show" id="CzZ-5U-Qvb"/>
                                 </connections>
                             </tableViewCell>

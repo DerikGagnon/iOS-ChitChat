@@ -7,11 +7,11 @@
 //
 
 import Foundation
-import Alamofire
 import CoreLocation
+import Alamofire
 
-let API_KEY = "524d4955-63f6-40bb-b5e0-63caea8b981d";
-let CLIENT = "derik.gagnon@mymail.champlain.edu";
+let API_KEY = "524d4955-63f6-40bb-b5e0-63caea8b981d"
+let CLIENT = "derik.gagnon@mymail.champlain.edu"
 
 struct Message {
     let id:String
@@ -51,27 +51,31 @@ struct Message {
     
     mutating func like() {
         //Stores the Liked messages in an array for freezing later
+        print("Inside like function")
         var likes = (UserDefaults.standard.array(forKey: "likes") ?? []) as! [String]
-        let dislikes = (UserDefaults.standard.array(forKey: "dislikes") ?? []) as! [String]
-        if !likes.contains(id) && !dislikes.contains(id) {
+        //let dislikes = (UserDefaults.standard.array(forKey: "dislikes") ?? []) as! [String]
+        //if !likes.contains(id) && !dislikes.contains(id) {
             likes.append(id)
+            print(id)
             self.likes += 1
             let url: String = "https://www.stepoutnyc.com/chitchat/like/" + id
             Alamofire.request(url, method: .get , parameters: ["key" : API_KEY, "client" : CLIENT])
             UserDefaults.standard.set(likes, forKey: "likes")
-        }
+        //}
     }
     
     mutating func dislike() {
         //Stores the Disliked messages in an array for freezing later
-        let likes = (UserDefaults.standard.array(forKey: "likes") ?? []) as! [String]
+        print("Inside dislike function")
+        //let likes = (UserDefaults.standard.array(forKey: "likes") ?? []) as! [String]
         var dislikes = (UserDefaults.standard.array(forKey: "dislikes") ?? []) as! [String]
-        if !likes.contains(id) && !dislikes.contains(id) {
+        //if !likes.contains(id) && !dislikes.contains(id) {
             dislikes.append(id)
+            print(id)
             self.dislikes += 1
             let url: String = "https://www.stepoutnyc.com/chitchat/dislike/" + id
             Alamofire.request(url, method: .get , parameters: ["key" : API_KEY, "client" : CLIENT])
             UserDefaults.standard.set(dislikes, forKey: "dislikes")
-        }
+        //}
     }
 }

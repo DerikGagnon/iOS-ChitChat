@@ -21,12 +21,12 @@ class MessagesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageCell
         
-        let m = messages[indexPath.row]
+        cell.setMessage(message: messages[indexPath.row])
         
-        cell.likes.text = String(m.likes)
-        cell.dislikes.text = String(m.dislikes)
-        cell.date.text = m.date
-        cell.message.text = m.message
+//        cell.likesLabel.text = String(m.likes)
+//        cell.dislikesLabel.text = String(m.dislikes)
+//        cell.dateLabel.text = m.date
+//        cell.messageLabel.text = m.message
         
         return cell
     }
@@ -53,7 +53,9 @@ class MessagesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         getData()
-        tableView.rowHeight = 100
+        //tableView.rowHeight = 100
+        tableView.estimatedRowHeight = 90
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     override func viewWillAppear(_ animated: Bool) {
