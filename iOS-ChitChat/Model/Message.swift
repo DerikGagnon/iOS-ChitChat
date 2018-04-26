@@ -21,6 +21,7 @@ struct Message {
     var likes: Int
     var loc: CLLocationCoordinate2D?
     let message: String
+    let defaults = UserDefaults.standard
     
     init?(json: [String: Any]) {
         let idJSON = json["_id"] as? String
@@ -60,7 +61,8 @@ struct Message {
             self.likes += 1
             let url: String = "https://www.stepoutnyc.com/chitchat/like/" + id
             Alamofire.request(url, method: .get , parameters: ["key" : API_KEY, "client" : CLIENT])
-            UserDefaults.standard.set(likes, forKey: "likes")
+            defaults.set(likes, forKey: "likes")
+            defaults.synchronize()
         //}
     }
     
@@ -75,7 +77,8 @@ struct Message {
             self.dislikes += 1
             let url: String = "https://www.stepoutnyc.com/chitchat/dislike/" + id
             Alamofire.request(url, method: .get , parameters: ["key" : API_KEY, "client" : CLIENT])
-            UserDefaults.standard.set(dislikes, forKey: "dislikes")
+            defaults.set(dislikes, forKey: "dislikes")
+            defaults.synchronize()
         //}
     }
 }
