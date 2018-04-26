@@ -76,34 +76,34 @@ class MessagesTableViewController: UITableViewController {
         return 1
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "detail"{
-//            if let indexPath = tableView.indexPathForSelectedRow{
-//                if let vc = segue.destination as? MessagesViewController{
-//                    if messages[indexPath.row].loc == nil{
-//                        vc.lat = 44.4681595
-//                        vc.lon = -73.1967075
-//                    }
-//                    else{
-//                        vc.lat = (messages[indexPath.row].loc?.latitude)!
-//                        vc.lon = (messages[indexPath.row].loc?.longitude)!
-//                    }
-//
-//                    let messageArray:Array<String> = messages[indexPath.row].message.components(separatedBy: " ")
-//                    for index in 0...messageArray.count - 1{
-//                        if (messageArray[index] == ""){
-//                            continue
-//                        }
-//                        let url = URL(string: messageArray[index])
-//                        if url?.pathExtension == "png" || url?.pathExtension == "jpg" {
-//                            vc.url = url!
-//                        }
-//                    }
-//                }
-//            }
-//
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detail"{
+            if let indexPath = tableView.indexPathForSelectedRow{
+                if let vc = segue.destination as? MessagesViewController{
+                    if messages[indexPath.row].loc == nil{
+                        vc.lat = 44.4681595
+                        vc.lon = -73.1967075
+                    }
+                    else{
+                        vc.lat = (messages[indexPath.row].loc?.latitude)!
+                        vc.lon = (messages[indexPath.row].loc?.longitude)!
+                    }
+
+                    let messageArray:Array<String> = messages[indexPath.row].message.components(separatedBy: " ")
+                    for index in 0...messageArray.count - 1{
+                        if (messageArray[index] == ""){
+                            continue
+                        }
+                        let url = URL(string: messageArray[index])
+                        if url?.pathExtension == "png" || url?.pathExtension == "jpg" {
+                            vc.url = url!
+                        }
+                    }
+                }
+            }
+
+        }
+    }
     
 }
 
