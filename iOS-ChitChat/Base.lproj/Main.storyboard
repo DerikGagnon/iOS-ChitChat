@@ -103,7 +103,9 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dateLabel" destination="5VB-V8-jSi" id="85S-K5-BXN"/>
+                                    <outlet property="dislikeButton" destination="OSU-RB-mbp" id="dgh-fT-ZKo"/>
                                     <outlet property="dislikesLabel" destination="atu-6N-jPD" id="dwr-rm-j4B"/>
+                                    <outlet property="likeButton" destination="eha-TU-x2A" id="ID5-MT-8YN"/>
                                     <outlet property="likesLabel" destination="6Yl-7D-rUs" id="d9I-0L-bLP"/>
                                     <outlet property="messageLabel" destination="u4s-4B-Qrm" id="mHv-Zr-PXI"/>
                                     <segue destination="5Wg-gX-5Zi" kind="show" identifier="detail" id="bwX-aO-uRv"/>
@@ -137,26 +139,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CPc-jk-R2o">
-                                <rect key="frame" x="16" y="81" width="288" height="202"/>
+                                <rect key="frame" x="16" y="81" width="288" height="228"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="288" id="Q7r-Yv-XGh"/>
-                                    <constraint firstAttribute="height" constant="202" id="cG2-en-yuh"/>
+                                    <constraint firstAttribute="width" constant="288" id="1WC-Pm-PF3"/>
+                                    <constraint firstAttribute="height" constant="228" id="e4c-r4-Ems"/>
                                 </constraints>
                             </imageView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y5L-l5-jVT">
-                                <rect key="frame" x="16" y="304" width="288" height="234"/>
+                                <rect key="frame" x="16" y="317" width="288" height="234"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="288" id="ByX-hj-6IB"/>
-                                    <constraint firstAttribute="height" constant="234" id="IEp-ck-4wH"/>
+                                    <constraint firstAttribute="width" constant="288" id="56k-FL-XfN"/>
+                                    <constraint firstAttribute="height" constant="234" id="8R7-oc-tek"/>
                                 </constraints>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="y5L-l5-jVT" firstAttribute="centerX" secondItem="Enx-c8-SVD" secondAttribute="centerX" id="OOr-9v-8ua"/>
-                            <constraint firstItem="CPc-jk-R2o" firstAttribute="top" secondItem="Enx-c8-SVD" secondAttribute="top" constant="17" id="hkx-qE-cWm"/>
-                            <constraint firstItem="Enx-c8-SVD" firstAttribute="bottom" secondItem="y5L-l5-jVT" secondAttribute="bottom" constant="30" id="sI6-AO-HwL"/>
-                            <constraint firstItem="CPc-jk-R2o" firstAttribute="centerX" secondItem="Enx-c8-SVD" secondAttribute="centerX" id="toN-fV-PT9"/>
+                            <constraint firstItem="CPc-jk-R2o" firstAttribute="centerX" secondItem="Enx-c8-SVD" secondAttribute="centerX" id="Lf4-sO-HMa"/>
+                            <constraint firstItem="y5L-l5-jVT" firstAttribute="centerX" secondItem="Enx-c8-SVD" secondAttribute="centerX" id="brK-wh-f6b"/>
+                            <constraint firstItem="CPc-jk-R2o" firstAttribute="top" secondItem="Enx-c8-SVD" secondAttribute="top" constant="17" id="eTo-vz-Kys"/>
+                            <constraint firstItem="Enx-c8-SVD" firstAttribute="bottom" secondItem="y5L-l5-jVT" secondAttribute="bottom" constant="17" id="jYy-BN-zOe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Enx-c8-SVD"/>
                     </view>
