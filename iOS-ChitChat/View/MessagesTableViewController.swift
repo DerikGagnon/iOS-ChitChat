@@ -8,8 +8,33 @@
 
 import UIKit
 import Alamofire
+import CoreLocation
 
 class MessagesTableViewController: UITableViewController {
+    
+    @IBAction func sendMessageButton(_ sender: UIBarButtonItem) {
+        
+        //1. Create the alert controller.
+        let alert = UIAlertController(title: "Chit Chat", message: "Send Message", preferredStyle: .alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextField { (textField) in
+            textField.text = "Enter text here.."
+        }
+        
+        // 3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+            //print("Text field: \(textField?.text)")
+            self.sendMessage(message: (textField?.text)!)
+            self.getData()
+        }))
+        
+        // 4. Present the alert.
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     var messages: [Message] = []
     var message: Message!
     var numMessages: Int = 20
@@ -62,7 +87,6 @@ class MessagesTableViewController: UITableViewController {
                     let messageText = jsonMessage as! NSDictionary as! [String: Any]
                     self.message = Message(json: messageText)
                     self.messages.append(self.message)
-                    print (self.message.id)
                 }
             }
             self.tableView.reloadData()
@@ -121,6 +145,31 @@ class MessagesTableViewController: UITableViewController {
             }
 
         }
+    }
+    
+    func sendMessage (message: String) {
+        var lat: String = ""
+        var lon: String = ""
+        
+        let locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        var currentLocation: CLLocation!
+
+        currentLocation = locationManager.location
+        
+        //Default values
+        locationManager.desiredAccuracy = 1.0
+        locationManager.distanceFilter = 1.0
+        locationManager.startUpdatingLocation()
+        if locationManager.location != nil {
+            lon = "\(currentLocation.coordinate.longitude)"
+            lat = "\(currentLocation.coordinate.latitude)"
+        }
+        locationManager.stopUpdatingLocation()
+        
+        let url: String = "https://www.stepoutnyc.com/chitchat"
+        Alamofire.request(url, method: .post , parameters: ["key" : API_KEY, "client" : CLIENT, "message" : message, "lat" : lat, "lon" : lon])
+        
     }
 }
 

@@ -30,8 +30,6 @@ struct Message {
         let ipJSON = json["ip"] as? String
         let likesJSON = json["likes"] as? Int
         let messageJSON = json["message"] as? String
-    
-        //let coordinatesJSON = json["loc"] as? [String]
         if let coordinatesJSON = json["loc"] as? [Any] {
             if Double(String(describing: coordinatesJSON[0])) != nil && Double(String(describing: coordinatesJSON[1])) != nil {
                 let longitude: Double = Double(String(describing: coordinatesJSON[0]))!
@@ -44,41 +42,33 @@ struct Message {
         self.dislikes = dislikesJSON!
         self.ip = ipJSON!
         self.likes = likesJSON!
-        
-        //self.loc = coordinatesJSON!
         self.message = messageJSON!
         self.date = dateJSON!
     }
     
     mutating func like() {
-        //Stores the Liked messages in an array for freezing later
-        print("Inside like function")
+        //Stores the Liked messages in an array for freezing
         var likes = (UserDefaults.standard.array(forKey: "likes") ?? []) as! [String]
-        //let dislikes = (UserDefaults.standard.array(forKey: "dislikes") ?? []) as! [String]
-        //if !likes.contains(id) && !dislikes.contains(id) {
-            likes.append(id)
-            print(id)
-            self.likes += 1
-            let url: String = "https://www.stepoutnyc.com/chitchat/like/" + id
-            Alamofire.request(url, method: .get , parameters: ["key" : API_KEY, "client" : CLIENT])
-            defaults.set(likes, forKey: "likes")
-            defaults.synchronize()
-        //}
+        likes.append(id)
+        self.likes += 1
+        let url: String = "https://www.stepoutnyc.com/chitchat/like/" + id
+        
+        //Sends the actual get request
+        Alamofire.request(url, method: .get , parameters: ["key" : API_KEY, "client" : CLIENT])
+        defaults.set(likes, forKey: "likes")
+        defaults.synchronize()
     }
     
     mutating func dislike() {
-        //Stores the Disliked messages in an array for freezing later
-        print("Inside dislike function")
-        //let likes = (UserDefaults.standard.array(forKey: "likes") ?? []) as! [String]
+        //Stores the Disliked messages in an array for freezing
         var dislikes = (UserDefaults.standard.array(forKey: "dislikes") ?? []) as! [String]
-        //if !likes.contains(id) && !dislikes.contains(id) {
-            dislikes.append(id)
-            print(id)
-            self.dislikes += 1
-            let url: String = "https://www.stepoutnyc.com/chitchat/dislike/" + id
-            Alamofire.request(url, method: .get , parameters: ["key" : API_KEY, "client" : CLIENT])
-            defaults.set(dislikes, forKey: "dislikes")
-            defaults.synchronize()
-        //}
+        dislikes.append(id)
+        self.dislikes += 1
+        let url: String = "https://www.stepoutnyc.com/chitchat/dislike/" + id
+        
+        //Sends the actual get request
+        Alamofire.request(url, method: .get , parameters: ["key" : API_KEY, "client" : CLIENT])
+        defaults.set(dislikes, forKey: "dislikes")
+        defaults.synchronize()
     }
 }

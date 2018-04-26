@@ -117,7 +117,13 @@
                             <outlet property="delegate" destination="9il-yH-yhC" id="oLU-HB-PiW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Chit Chat" id="yEk-5z-gAH"/>
+                    <navigationItem key="navigationItem" title="Chit Chat" id="yEk-5z-gAH">
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="Bfd-BQ-H19">
+                            <connections>
+                                <action selector="sendMessageButton:" destination="9il-yH-yhC" id="H6A-gW-QTy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="EPk-KZ-jis">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
