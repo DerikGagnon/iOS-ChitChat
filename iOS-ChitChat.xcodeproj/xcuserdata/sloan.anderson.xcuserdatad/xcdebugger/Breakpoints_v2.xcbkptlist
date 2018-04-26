@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOS-ChitChat/View/MessagesTableViewController.swift"
-            timestampString = "546458333.427253"
+            timestampString = "546462990.894338"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOS-ChitChat/View/MessagesViewController.swift"
-            timestampString = "546458333.427345"
+            timestampString = "546462990.894696"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOS-ChitChat/View/MessagesTableViewController.swift"
-            timestampString = "546458333.427386"
+            timestampString = "546462990.89474"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOS-ChitChat/View/MessagesTableViewController.swift"
-            timestampString = "546458333.427428"
+            timestampString = "546462990.8949569"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOS-ChitChat/View/MessagesTableViewController.swift"
-            timestampString = "546458333.42747"
+            timestampString = "546462990.895161"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOS-ChitChat/View/MessagesViewController.swift"
-            timestampString = "546458333.427512"
+            timestampString = "546462990.895366"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOS-ChitChat/View/MessagesViewController.swift"
-            timestampString = "546458333.427544"
+            timestampString = "546462990.8954051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
@@ -194,7 +194,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOS-ChitChat/View/MessagesViewController.swift"
-            timestampString = "546458333.427579"
+            timestampString = "546462990.895439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "9"
@@ -287,11 +287,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOS-ChitChat/View/MessagesTableViewController.swift"
-            timestampString = "546458333.42761"
+            timestampString = "546462990.89547"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -303,7 +303,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOS-ChitChat/View/MessagesViewController.swift"
-            timestampString = "546458333.42765"
+            timestampString = "546462990.8956701"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -319,12 +319,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iOS-ChitChat/View/MessagesViewController.swift"
-            timestampString = "546458333.427681"
+            timestampString = "546462990.8957061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
             endingLineNumber = "34"
             landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOS-ChitChat/View/MessagesTableViewController.swift"
+            timestampString = "546462990.895739"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iOS_ChitChat.MessagesTableViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "iOS-ChitChat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sloan.anderson/Downloads/iOS-ChitChat-master/iOS-ChitChat/View/MessagesTableViewController.swift"
+                  timestampString = "546462716.636201"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
+                  offsetFromSymbolStart = "664">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #2 : @autoclosure () throws -&gt; Swift.Array&lt;Swift.String&gt; in iOS_ChitChat.MessagesTableViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "iOS-ChitChat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sloan.anderson/Downloads/iOS-ChitChat-master/iOS-ChitChat/View/MessagesTableViewController.swift"
+                  timestampString = "546462716.637327"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOS-ChitChat/View/MessagesTableViewController.swift"
+            timestampString = "546462990.895908"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

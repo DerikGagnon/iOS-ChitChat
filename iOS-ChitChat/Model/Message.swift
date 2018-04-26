@@ -21,6 +21,7 @@ struct Message {
     var likes: Int
     var loc: CLLocationCoordinate2D?
     let message: String
+    let defaults = UserDefaults.standard
     
     init?(json: [String: Any]) {
         let idJSON = json["_id"] as? String

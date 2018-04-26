@@ -29,8 +29,6 @@ class MessagesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageCell
 
         cell.setMessage(message: messages[indexPath.row])
-        cell.isDisliked = isDisliked
-        cell.isLiked = isLiked
         if isLiked.contains(messages[indexPath.row].id){
             cell.disableButton(button: "Like")
         }
@@ -44,7 +42,7 @@ class MessagesTableViewController: UITableViewController {
         else{
             cell.enableButton(button: "Dislike")
         }
-        
+
 //        cell.likesLabel.text = String(m.likes)
 //        cell.dislikesLabel.text = String(m.dislikes)
 //        cell.dateLabel.text = m.date
@@ -74,8 +72,8 @@ class MessagesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        isLiked = defaults.stringArray(forKey: "LikesArray") ?? [String] ()
-        isDisliked = defaults.stringArray(forKey: "DislikesArray") ?? [String] ()
+        isLiked = defaults.stringArray(forKey: "likes") ?? [String] ()
+        isDisliked = defaults.stringArray(forKey: "dislikes") ?? [String] ()
         getData()
         //tableView.rowHeight = 100
         tableView.estimatedRowHeight = 90
@@ -94,14 +92,6 @@ class MessagesTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
-    }
-    
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        
-        defaults.set(isLiked, forKey: "LikesArray")
-        defaults.set(isDisliked, forKey: "DislikesArray")
-        UserDefaults.standard.synchronize()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -19,8 +19,6 @@ class MessageCell : UITableViewCell {
     
     var messageItem: Message!
     let defaults = UserDefaults.standard
-    var isLiked:Array<String> = []
-    var isDisliked:Array<String> = []
     
     func setMessage(message: Message) {
         self.messageItem = message
@@ -40,7 +38,6 @@ class MessageCell : UITableViewCell {
         messageItem?.like()
         likesLabel.text = String(theNumber! + 1)
         
-        isLiked.append(messageItem.id)
         disableButton(button:"Like")
     }
     
@@ -53,7 +50,6 @@ class MessageCell : UITableViewCell {
         messageItem?.dislike()
         dislikesLabel.text = String(theNumber! + 1)
         
-        isDisliked.append(messageItem.id)
         disableButton(button:"Dislike")
         
     }
