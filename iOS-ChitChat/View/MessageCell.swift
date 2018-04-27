@@ -20,6 +20,7 @@ class MessageCell : UITableViewCell {
     var messageItem: Message!
     let defaults = UserDefaults.standard
     
+    //function for setting the items to be used for the cell
     func setMessage(message: Message) {
         self.messageItem = message
         messageLabel.text = message.message
@@ -54,6 +55,7 @@ class MessageCell : UITableViewCell {
         
     }
     
+    //Disable like and dislike button
     func disableButton(button: String){
         if button == "Like"{
             likeButton.isEnabled = false
@@ -63,6 +65,7 @@ class MessageCell : UITableViewCell {
         }
     }
     
+    //Enable like and dislike button
     func enableButton(button: String){
         if button == "Like"{
             likeButton.isEnabled = true
@@ -72,6 +75,7 @@ class MessageCell : UITableViewCell {
         }
     }
     
+    //Initialize the items in the cell
     var cell: Message? {
         didSet {
             guard let cell = cell else {

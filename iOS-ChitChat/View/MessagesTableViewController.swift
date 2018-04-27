@@ -14,6 +14,7 @@ class MessagesTableViewController: UITableViewController {
     
     @IBAction func sendMessageButton(_ sender: UIBarButtonItem) {
         
+        //Taken from https://stackoverflow.com/questions/26567413/get-input-value-from-textfield-in-ios-alert-in-swift
         //1. Create the alert controller.
         let alert = UIAlertController(title: "Chit Chat", message: "Send Message", preferredStyle: .alert)
         
@@ -25,7 +26,6 @@ class MessagesTableViewController: UITableViewController {
         // 3. Grab the value from the text field, and print it when the user clicks OK.
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
-            //print("Text field: \(textField?.text)")
             self.sendMessage(message: (textField?.text)!)
             self.getData()
         }))
@@ -46,10 +46,13 @@ class MessagesTableViewController: UITableViewController {
         return messages.count
     }
     
-    @IBAction func refresh(_ sender: Any) {
+    //Pull to refresh
+    @IBAction func refresh(_ sender: UIRefreshControl) {
         getData()
+        sender.endRefreshing()
     }
     
+    //Enabling and disabling the like/dislike button from the liked and disliked posts
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageCell
 
@@ -67,15 +70,11 @@ class MessagesTableViewController: UITableViewController {
         else{
             cell.enableButton(button: "Dislike")
         }
-
-//        cell.likesLabel.text = String(m.likes)
-//        cell.dislikesLabel.text = String(m.dislikes)
-//        cell.dateLabel.text = m.date
-//        cell.messageLabel.text = m.message
         
         return cell
     }
     
+    //Get the first 20 messages
     func getData() {
         Alamofire.request("https://www.stepoutnyc.com/chitchat", method: .get, parameters: ["key" : API_KEY, "client" : CLIENT]).responseJSON { response in
             if let json = response.result.value {
@@ -92,14 +91,50 @@ class MessagesTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
+    
+    //Simple function that creates the swiping action to like a message.
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let cell = tableView.cellForRow(at: indexPath) as! MessageCell
+        let likeAction = UIContextualAction(style: .normal, title: "Like", handler: { (ac:UIContextualAction, view: UIView, success: (Bool) -> Void) in success(true)
+            self.messages[indexPath.row].like()
+            
+            let text = cell.likesLabel.text   // converting the labels display to a string value
+            let numberFormatter = NumberFormatter()
+            let theNumber = numberFormatter.number(from: text!)?.intValue
+            cell.likesLabel.text = String(theNumber! + 1)
+            
+            cell.likeButton.isEnabled = false
+        })
+        likeAction.backgroundColor = .green
+        return UISwipeActionsConfiguration(actions: [likeAction])
+    }
+    
+    //Same as for the other swiping action but dislikes instead
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let cell = tableView.cellForRow(at: indexPath) as! MessageCell
+        let dislikeAction = UIContextualAction(style: .normal, title: "Dislike", handler: { (ac:UIContextualAction, view: UIView, success: (Bool) -> Void) in success(true)
+            self.messages[indexPath.row].dislike()
+            
+            let text = cell.dislikesLabel.text   // converting the labels display to a string value
+            let numberFormatter = NumberFormatter()
+            let theNumber = numberFormatter.number(from: text!)?.intValue
+            cell.dislikesLabel.text = String(theNumber! + 1)
+            
+            cell.dislikeButton.isEnabled = false
+        })
+        dislikeAction.backgroundColor = .red
+        return UISwipeActionsConfiguration(actions: [dislikeAction])
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //loads the defaults for likes/dislikes
         isLiked = defaults.stringArray(forKey: "likes") ?? [String] ()
         isDisliked = defaults.stringArray(forKey: "dislikes") ?? [String] ()
         getData()
-        //tableView.rowHeight = 100
         tableView.estimatedRowHeight = 90
         tableView.rowHeight = UITableViewAutomaticDimension
     }
@@ -122,15 +157,18 @@ class MessagesTableViewController: UITableViewController {
         if segue.identifier == "detail"{
             if let indexPath = tableView.indexPathForSelectedRow{
                 if let vc = segue.destination as? MessagesViewController{
+                    
+                    //Default location 
                     if messages[indexPath.row].loc == nil{
-                        vc.lat = 44.4681595
-                        vc.lon = -73.1967075
+                        vc.lat = 0.0
+                        vc.lon = 0.0
                     }
                     else{
                         vc.lat = (messages[indexPath.row].loc?.latitude)!
                         vc.lon = (messages[indexPath.row].loc?.longitude)!
                     }
 
+                    //Check for the urls with pmg and jpg extension
                     let messageArray:Array<String> = messages[indexPath.row].message.components(separatedBy: " ")
                     for index in 0...messageArray.count - 1{
                         if (messageArray[index] == ""){
@@ -148,16 +186,17 @@ class MessagesTableViewController: UITableViewController {
     }
     
     func sendMessage (message: String) {
-        var lat: String = ""
-        var lon: String = ""
+        
+        //Default values
+        var lat: String = "0.0"
+        var lon: String = "0.0"
         
         let locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
         var currentLocation: CLLocation!
-
         currentLocation = locationManager.location
         
-        //Default values
+        //Default setup
         locationManager.desiredAccuracy = 1.0
         locationManager.distanceFilter = 1.0
         locationManager.startUpdatingLocation()
@@ -167,6 +206,7 @@ class MessagesTableViewController: UITableViewController {
         }
         locationManager.stopUpdatingLocation()
         
+        //Send Message here
         let url: String = "https://www.stepoutnyc.com/chitchat"
         Alamofire.request(url, method: .post , parameters: ["key" : API_KEY, "client" : CLIENT, "message" : message, "lat" : lat, "lon" : lon])
         
